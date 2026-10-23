@@ -2,3 +2,4 @@
 ignore.*
 build/
 *.exe
+.vscode/

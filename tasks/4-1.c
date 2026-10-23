@@ -8,6 +8,13 @@ or -1 if there is none.
 
 #include <stdio.h>
 
+int strrindex(const char *source, const char *pattern)
+{
+    int result = 0;
+
+    return result;
+}
+
 int main()
 {
     return 0;
