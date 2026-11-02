@@ -4,3 +4,4 @@ build/
 .shu/
 *.exe
 .vscode/
+compile_commands.json

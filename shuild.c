@@ -14,20 +14,29 @@ void ForEachExerciseFile(const char *path, SHUFileType type, void *data)
     }
 
     usz pathLength = strlen(path);
-    SHUSlice moduleName = cs(path, pathLength - 2);
+    SHUSlice sourceName = cs((char *)path, pathLength - 4);
     for (usz i = pathLength - 1; i >= 0; i--)
     {
         if (path[i] == SHUM_PATH_SEPARATOR)
         {
-            moduleName = cs(path + i + 1, pathLength - i + 1 - 2);
+            sourceName = cs((char *)path + i + 1, pathLength - i - 1);
             break;
         }
     }
 
-    SHU_LogInfo("%s", SHU_UtilFormat("%.*s", (usz)path - (usz)moduleName.data, path));
+    const char *moduleName = SHU_UtilFormat("%.*s", sourceName.size - 2, sourceName.data);
+    const char *sourceNameStr = SHU_UtilFormat("%.*s", sourceName.size, sourceName.data);
+    const char *moduleRoot = SHU_UtilFormat("%.*s", pathLength - sourceName.size - 1, path);
 
-    // SHU_MODULE(SHU_UtilFormat("%.*s", moduleName.size, moduleName.data), SHU_UtilFormat("%.*s", (usz)path - (usz)moduleName.data, path), SHUModuleType_Executable, OUTPUT_DIR)
+    SHU_LogInfo("'%s'", moduleName);
+    SHU_LogInfo("'%s'", moduleRoot);
+
+    SHU_MODULE(moduleName,
+               moduleRoot,
+               SHUModuleType_Executable,
+               SHU_UtilFormat("%s%s", OUTPUT_DIR, moduleRoot))
     {
+        SHU_ModuleAddSourceFiles(sourceNameStr);
     }
 }
 
