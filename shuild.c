@@ -13,31 +13,24 @@ void ForEachExerciseFile(const char *path, SHUFileType type, void *data)
         return;
     }
 
-    usz pathLength = strlen(path);
-    SHUSlice sourceName = cs((char *)path, pathLength - 4);
-    for (usz i = pathLength - 1; i >= 0; i--)
-    {
-        if (path[i] == SHUM_PATH_SEPARATOR)
-        {
-            sourceName = cs((char *)path + i + 1, pathLength - i - 1);
-            break;
-        }
-    }
+    SHU_LogInfo("'%s'", path);
 
-    const char *moduleName = SHU_UtilFormat("%.*s", sourceName.size - 2, sourceName.data);
-    const char *sourceNameStr = SHU_UtilFormat("%.*s", sourceName.size, sourceName.data);
-    const char *moduleRoot = SHU_UtilFormat("%.*s", pathLength - sourceName.size - 1, path);
-
-    SHU_LogInfo("'%s'", moduleName);
-    SHU_LogInfo("'%s'", moduleRoot);
+    const char *sourceName = SHUI_PathFileName(path);
+    char *rootDir = SHUI_PathDirectory(path);
+    char *moduleName = SHU_UtilFormat("%.*s", strlen(sourceName) - 2, sourceName);
+    char *outputDir = SHUI_PathJoinDirectory("build", rootDir);
 
     SHU_MODULE(moduleName,
-               moduleRoot,
+               rootDir,
                SHUModuleType_Executable,
-               SHU_UtilFormat("%s%s", OUTPUT_DIR, moduleRoot))
+               outputDir)
     {
-        SHU_ModuleAddSourceFiles(sourceNameStr);
+        SHU_ModuleAddSourceFiles(sourceName);
     }
+
+    free(rootDir);
+    free(moduleName);
+    free(outputDir);
 }
 
 int main(int argc, char **argv)
