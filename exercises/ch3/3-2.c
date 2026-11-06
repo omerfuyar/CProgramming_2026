@@ -1,14 +1,9 @@
 /*
-Exercise 3-2
-Write a function escape(s,t) that converts characters like newline and tab into visible
-escape sequences like \n and \t as it copies the string t to s. Use a switch. Write a
-function for other direction as well, converting escape sequences into the real
-characters.
-Suppose that  input t[] = “Hello\tworld\nThis is a test.”
-•write escape(s,t) that copies characters from t to s, but converts newline(\n) and
-tab(\t) characters into their respective escape sequences( \\n, \\t)
-•and unescaped(s,t) that convert escape sequences(\\n, \\t) back into their
-corresponding special characters(\n,\t)
+Exercise 3-2. Write a function escape(s,t) that converts characters like newline and tab into visible escape sequences like \n and \t as it copies the string t to s. Use a switch. Write a function for other direction as well, converting escape sequences into the real characters.
+
+Suppose that  input t[] = “Hello\tworld\nThis is a test.”
+•write escape(s,t) that copies characters from t to s, but converts newline(\n) and tab(\t) characters into their respective escape sequences( \\n, \\t)
+•and unescaped(s,t) that convert escape sequences(\\n, \\t) back into their corresponding special characters(\n,\t)
 */
 
 #include <stdio.h>

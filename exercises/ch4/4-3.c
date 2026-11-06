@@ -1,6 +1,5 @@
 /*
-write a program to calculate the equation with polish notation (postfix) instead of infix
-Infix notation (1-2) * (4 +5)  is entered as 1 2 – 4 5 + *
+Exercise 4-3. Given the basic framework, it's straightforward to extend the cal- culator. Add the modulus (%) operator and provisions for negative numbers.
 */
 
 #include <stdio.h>
