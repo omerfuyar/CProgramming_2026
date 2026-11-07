@@ -4,14 +4,14 @@ Exercise 1-13. Write a program to print a histogram of the lengths of words in i
 
 #include <stdio.h>
 
-#define WORD_LENGTHS_COUNT 10
+#define CHAR_COUNT 10
 
 int main(int argc, char **argv)
 {
     int c, wl;
 
     wl = 0;
-    int wls[WORD_LENGTHS_COUNT] = {0};
+    int wls[CHAR_COUNT] = {0};
 
     while ((c = getchar()) != EOF)
     {
@@ -20,7 +20,7 @@ int main(int argc, char **argv)
         case ' ':
         case '\n':
         case '\t':
-            if (wl > 0 && wl < WORD_LENGTHS_COUNT)
+            if (wl > 0 && wl < CHAR_COUNT)
             {
                 wls[wl - 1]++;
             }
@@ -32,8 +32,8 @@ int main(int argc, char **argv)
         }
     }
 
-    printf("Word length histogram, range 0-%d:\n", WORD_LENGTHS_COUNT);
-    for (int i = 0; i < WORD_LENGTHS_COUNT; i++)
+    printf("Word length histogram, range 0-%d:\n", CHAR_COUNT);
+    for (int i = 0; i < CHAR_COUNT; i++)
     {
         printf("[%d]\t", i + 1);
         for (int j = 0; j < wls[i]; j++)
