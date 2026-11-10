@@ -5,10 +5,9 @@ Exercise 1-19. Write a function reverse(s) that reverses the character string s.
 #include <stdio.h>
 
 #define MAX_LINE 256 /* maximum input line length */
-#define MAX_STR 32
 
 int mygetline(char line[], int maxline);
-void reverse(char *buf, const char *str, int len);
+void detab(char *buf, const char *str, int len);
 
 /* print the longest input line */
 int main()
@@ -20,7 +19,7 @@ int main()
 
     while ((len = mygetline(line, MAX_LINE)) > 0)
     {
-        reverse(lineReversed, line, len);
+        detab(lineReversed, line, len);
         printf("reversed : '%s'\n", lineReversed);
     }
 
@@ -47,10 +46,10 @@ int mygetline(char line[], int maxline)
     return i;
 }
 
-void reverse(char *buf, const char *str, int len)
+void detab(char *buf, const char *str, int len)
 {
-    for (int index = len - 1; index >= 0; index--)
+    for (int i = len - 1; i >= 0; i--)
     {
-        buf[len - index - 1] = str[index];
+        buf[len - i - 1] = str[i];
     }
 }
