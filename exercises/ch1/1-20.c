@@ -16,7 +16,6 @@ int main()
     int len;                  /* current line length */
     char line[MAX_LINE];      /* current input line */
     char lineDetab[MAX_LINE]; /* current input line */
-    int selectedLineCount = 0;
 
     while ((len = mygetline(line, MAX_LINE)) > 0)
     {

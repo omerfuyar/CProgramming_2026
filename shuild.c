@@ -20,7 +20,7 @@ void ForEachExerciseFile(const char *path, SHUFileType type, void *data)
     char *moduleName = SHU_UtilFormat("%.*s", strlen(sourceName) - 2, sourceName);
     char *outputDir = SHUI_PathJoinDirectory("build", rootDir);
 
-    SHU_MODULE(moduleName,
+    SHU_Module(moduleName,
                rootDir,
                SHUModuleType_Executable,
                outputDir)

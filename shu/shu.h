@@ -258,10 +258,10 @@ typedef const struct SHUSliceView
 /// @param result Expression of type SHUResult to check.
 /// @note result is evaluated once, even when SHU_NO_ASSERT is defined, so it can be a call.
 #ifndef SHU_NO_ASSERT
-#define SHU_AssertResult(result)                                                                \
-    do                                                                                          \
-    {                                                                                           \
-        int ___shuassert = (int)(result);                                                       \
+#define SHU_AssertResult(result)                                                                    \
+    do                                                                                              \
+    {                                                                                               \
+        int ___shuassert = (int)(result);                                                           \
         SHU_Assert(!___shuassert, "Result of " #result " (%d) is not SHUResult_Ok.", ___shuassert); \
     } while (0)
 #else
