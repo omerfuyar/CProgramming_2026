@@ -10,11 +10,11 @@ int charInStr(int c, const char *str)
     {
         if (str[i] == c)
         {
-            return 1;
+            return i;
         }
     }
 
-    return 0;
+    return -1;
 }
 
 void squeeze(char *str, const char *chars)
@@ -24,7 +24,7 @@ void squeeze(char *str, const char *chars)
 
     while (str[readHead] != '\0')
     {
-        if (!charInStr(str[readHead], chars))
+        if (charInStr(str[readHead], chars) == -1)
         {
             str[writeHead] = str[readHead];
             writeHead++;
