@@ -106,7 +106,7 @@ int htoi(const char *str)
 
 int main(int argc, char **argv)
 {
-    const char *hexStr = "0xdead";
+    const char *hexStr = argc > 1 ? argv[1] : "0xdead";
     printf("decimal value of '%s' is : '%d'\n", hexStr, htoi(hexStr));
 
     return 0;
